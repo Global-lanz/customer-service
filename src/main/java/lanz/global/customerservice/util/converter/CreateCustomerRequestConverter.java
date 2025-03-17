@@ -1,7 +1,7 @@
-package lanz.global.customerservice.util;
+package lanz.global.customerservice.util.converter;
 
 import lanz.global.customerservice.api.request.CustomerRequest;
-import lanz.global.customerservice.service.model.Customer;
+import lanz.global.customerservice.model.Customer;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package lanz.global.customerservice.util;
+package lanz.global.customerservice.util.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
