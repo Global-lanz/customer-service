@@ -1,7 +1,7 @@
-package lanz.global.customerservice.util;
+package lanz.global.customerservice.util.converter;
 
 import lanz.global.customerservice.api.response.CustomerResponse;
-import lanz.global.customerservice.service.model.Customer;
+import lanz.global.customerservice.model.Customer;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,6 +20,6 @@ public class CreateCustomerResponseConverter implements BaseConverter<Customer, 
                 entity.getBusinessSector(),
                 entity.getEstablishmentDate(),
                 entity.getNotes(),
-                entity.getCurrency() != null ? entity.getCurrency().getCurrencyId() : null);
+                entity.getCurrencyId());
     }
 }

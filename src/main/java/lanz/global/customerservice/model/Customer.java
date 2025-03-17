@@ -1,12 +1,10 @@
-package lanz.global.customerservice.service.model;
+package lanz.global.customerservice.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -58,11 +56,9 @@ public class Customer {
     @Column(name = "notes")
     private String notes;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @Column(name = "company_id")
+    private UUID companyId;
 
-    @ManyToOne
-    @JoinColumn(name = "currency_id")
-    private Currency currency;
+    @Column(name = "currency_id")
+    private UUID currencyId;
 }
