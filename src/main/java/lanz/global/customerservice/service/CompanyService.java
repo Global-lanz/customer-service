@@ -19,7 +19,7 @@ public class CompanyService {
 
     private final RestTemplate restTemplate;
 
-    String URL = "https://COMPANY-SERVICE:8082/company";
+    String URL = "http://company-service:8082/company";
 
     public CompanyResponse findCompanyById(UUID companyId) throws BadRequestException {
         if (companyId == null) {
