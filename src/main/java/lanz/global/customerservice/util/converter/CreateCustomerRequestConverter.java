@@ -8,19 +8,20 @@ import org.springframework.stereotype.Component;
 public class CreateCustomerRequestConverter implements BaseConverter<CustomerRequest, Customer> {
 
     @Override
-    public Customer convertToDto(CustomerRequest entity) {
+    public Customer convertToDto(CustomerRequest request) {
         Customer customer = new Customer();
-        customer.setName(entity.name());
-        customer.setTaxIdentificationNumber(entity.taxIdentificationNumber());
-        customer.setTaxIdentificationType(entity.taxIdentificationType());
-        customer.setTaxRegime(entity.taxRegime());
-        customer.setAnnualRevenue(entity.annualRevenue());
-        customer.setCountry(entity.country());
-        customer.setAddress(entity.address());
-        customer.setPostalCode(entity.postalCode());
-        customer.setBusinessSector(entity.businessSector());
-        customer.setEstablishmentDate(entity.establishmentDate());
-        customer.setNotes(entity.notes());
+        customer.setName(request.name());
+        customer.setTaxIdentificationNumber(request.taxIdentificationNumber());
+        customer.setTaxIdentificationType(request.taxIdentificationType());
+        customer.setTaxRegime(request.taxRegime());
+        customer.setAnnualRevenue(request.annualRevenue());
+        customer.setCountry(request.country());
+        customer.setAddress(request.address());
+        customer.setPostalCode(request.postalCode());
+        customer.setBusinessSector(request.businessSector());
+        customer.setEstablishmentDate(request.establishmentDate());
+        customer.setNotes(request.notes());
+        customer.setCurrencyId(request.currencyId());
         return customer;
     }
 
