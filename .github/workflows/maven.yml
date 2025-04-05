@@ -6,18 +6,18 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Generate Final Version
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-publish:
     permissions: write-all
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: maiconlanzendorf/customer-service
 
     steps:
     - uses: actions/checkout@v4
@@ -27,8 +27,31 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+
+     # Passo 2: Instalar xmllint e extrair a versão do pom.xml
+    - name: Install xmllint and extract version from pom.xml
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libxml2-utils  # Instala xmllint
+        VERSION=$(xmllint --xpath "string(//project/version)" pom.xml)
+        echo "Version from pom.xml: $VERSION"
+        echo "version=$VERSION" >> $GITHUB_ENV
+
+    # Passo 3: Extrair a versão do pom.xml com Maven
+    - name: Get version from pom.xml using Maven
+      id: get_version
+      run: |
+        VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        echo "Version from pom.xml: $VERSION"
+        echo "version=$VERSION" >> $GITHUB_ENV
+
+
+    - name: Build with Maven and Deploy into Docker Hub
+      run: mvn spring-boot:build-image "-Dspring-boot.build-image.imageName=${{ env.IMAGE_NAME }}:${{ env.version }}" --file pom.xml
+   
+    # 4️⃣ Faz push da imagem Docker para o Docker Hub
+    - name: Push Docker Image
+      run: docker push ${{ env.IMAGE_NAME }}:${{ env.version }}
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
