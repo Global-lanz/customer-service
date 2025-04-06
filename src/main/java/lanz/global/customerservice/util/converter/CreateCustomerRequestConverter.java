@@ -2,13 +2,14 @@ package lanz.global.customerservice.util.converter;
 
 import lanz.global.customerservice.api.request.CustomerRequest;
 import lanz.global.customerservice.model.Customer;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreateCustomerRequestConverter implements BaseConverter<CustomerRequest, Customer> {
+public class CreateCustomerRequestConverter implements Converter<CustomerRequest, Customer> {
 
     @Override
-    public Customer convertToDto(CustomerRequest request) {
+    public Customer convert(CustomerRequest request) {
         Customer customer = new Customer();
         customer.setName(request.name());
         customer.setTaxIdentificationNumber(request.taxIdentificationNumber());
