@@ -1,6 +1,7 @@
 package lanz.global.customerservice.security;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
@@ -12,10 +13,10 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class HeaderInterceptor implements ClientHttpRequestInterceptor {
 
-    @Autowired
-    HttpServletRequest request;
+    private final HttpServletRequest request;
 
     @Override
     public ClientHttpResponse intercept(
