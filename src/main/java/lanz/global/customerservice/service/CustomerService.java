@@ -2,6 +2,7 @@ package lanz.global.customerservice.service;
 
 import lanz.global.customerservice.api.request.CustomerRequest;
 import lanz.global.customerservice.exception.NotFoundException;
+import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import lanz.global.customerservice.facade.AuthenticationFacade;
 import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.repository.CustomerRepository;
@@ -26,8 +27,10 @@ public class CustomerService {
         Customer customer = serviceConverter.convert(customerRequest, Customer.class);
         customer.setCompanyId(companyService.findCompanyById(authenticationFacade.getCompanyId()).companyId());
 
-        if (customerRequest.currencyId() != null) {
-            customer.setCurrencyId(companyService.findCurrencyById(customerRequest.currencyId()).currencyId());
+        CurrencyResponse currencyResponse = companyService.findCurrencyById(customerRequest.currencyId());
+
+        if (currencyResponse != null) {
+            customer.setCurrencyId(currencyResponse.currencyId());
         }
 
         return customerRepository.save(customer);
