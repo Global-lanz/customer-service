@@ -1,4 +1,4 @@
-package lanz.global.customerservice.clients;
+package lanz.global.customerservice.external.api.finance;
 
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -1,4 +1,4 @@
-package lanz.global.customerservice.clients;
+package lanz.global.customerservice.external.api.company;
 
 import lanz.global.customerservice.external.api.company.response.CompanyResponse;
 import org.springframework.cloud.openfeign.FeignClient;

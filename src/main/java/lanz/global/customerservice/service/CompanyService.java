@@ -1,8 +1,8 @@
 package lanz.global.customerservice.service;
 
 import jakarta.ws.rs.InternalServerErrorException;
-import lanz.global.customerservice.clients.CompanyClient;
-import lanz.global.customerservice.clients.FinanceClient;
+import lanz.global.customerservice.external.api.company.CompanyClient;
+import lanz.global.customerservice.external.api.finance.FinanceClient;
 import lanz.global.customerservice.exception.BadRequestException;
 import lanz.global.customerservice.external.api.company.response.CompanyResponse;
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
