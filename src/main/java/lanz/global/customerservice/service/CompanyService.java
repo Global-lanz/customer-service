@@ -1,10 +1,10 @@
 package lanz.global.customerservice.service;
 
 import jakarta.ws.rs.InternalServerErrorException;
-import lanz.global.customerservice.external.api.company.CompanyClient;
-import lanz.global.customerservice.external.api.finance.FinanceClient;
 import lanz.global.customerservice.exception.BadRequestException;
+import lanz.global.customerservice.external.api.company.CompanyClient;
 import lanz.global.customerservice.external.api.company.response.CompanyResponse;
+import lanz.global.customerservice.external.api.finance.FinanceClient;
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,7 @@ public class CompanyService {
             return null;
         }
 
-        ResponseEntity<CompanyResponse> response = companyClient.findCompanyById(companyId);
-
-        return switch (response.getStatusCode()) {
-            case HttpStatus.OK -> response.getBody();
-            case HttpStatus.BAD_REQUEST -> throw new BadRequestException("company");
-            case null, default -> throw new InternalServerErrorException();
-        };
+        return companyClient.findCompanyById(companyId);
     }
 
     public CurrencyResponse findCurrencyById(UUID currencyId) throws BadRequestException {
@@ -40,13 +34,7 @@ public class CompanyService {
             return null;
         }
 
-        ResponseEntity<CurrencyResponse> response = financeClient.findCurrencyById(currencyId);
-
-        return switch (response.getStatusCode()) {
-            case HttpStatus.OK -> response.getBody();
-            case HttpStatus.BAD_REQUEST -> throw new BadRequestException("currency");
-            case null, default -> throw new InternalServerErrorException();
-        };
+        return financeClient.findCurrencyById(currencyId);
     }
 
 }
