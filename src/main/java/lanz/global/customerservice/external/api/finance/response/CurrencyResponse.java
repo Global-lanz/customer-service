@@ -1,4 +1,4 @@
-package lanz.global.customerservice.external.api.company.response;
+package lanz.global.customerservice.external.api.finance.response;
 
 import java.util.UUID;
 
