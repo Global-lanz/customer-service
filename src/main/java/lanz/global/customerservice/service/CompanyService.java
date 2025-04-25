@@ -1,15 +1,16 @@
 package lanz.global.customerservice.service;
 
 import jakarta.ws.rs.InternalServerErrorException;
-import lanz.global.customerservice.external.api.company.response.CompanyResponse;
-import lanz.global.customerservice.external.api.company.response.CurrencyResponse;
 import lanz.global.customerservice.exception.BadRequestException;
+import lanz.global.customerservice.external.api.company.CompanyClient;
+import lanz.global.customerservice.external.api.company.response.CompanyResponse;
+import lanz.global.customerservice.external.api.finance.FinanceClient;
+import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
@@ -17,22 +18,15 @@ import java.util.UUID;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CompanyService {
 
-    private final RestTemplate restTemplate;
-
-    String URL = "http://company-service:8082/company";
+    private final CompanyClient companyClient;
+    private final FinanceClient financeClient;
 
     public CompanyResponse findCompanyById(UUID companyId) throws BadRequestException {
         if (companyId == null) {
             return null;
         }
 
-        ResponseEntity<CompanyResponse> response = restTemplate.getForEntity(URL + "/" + companyId, CompanyResponse.class);
-
-        return switch (response.getStatusCode()) {
-            case HttpStatus.OK -> response.getBody();
-            case HttpStatus.BAD_REQUEST -> throw new BadRequestException("Company");
-            case null, default -> throw new InternalServerErrorException();
-        };
+        return companyClient.findCompanyById(companyId);
     }
 
     public CurrencyResponse findCurrencyById(UUID currencyId) throws BadRequestException {
@@ -40,13 +34,7 @@ public class CompanyService {
             return null;
         }
 
-        ResponseEntity<CurrencyResponse> response = restTemplate.getForEntity(URL + "/currency/" + currencyId, CurrencyResponse.class);
-
-        return switch (response.getStatusCode()) {
-            case HttpStatus.OK -> response.getBody();
-            case HttpStatus.BAD_REQUEST -> throw new BadRequestException("Currency");
-            case null, default -> throw new InternalServerErrorException();
-        };
+        return financeClient.findCurrencyById(currencyId);
     }
 
 }

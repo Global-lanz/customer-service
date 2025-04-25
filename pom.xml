@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>lanz.global</groupId>
 	<artifactId>customer-service</artifactId>
-	<version>1.2.0</version>
+	<version>1.3.0</version>
 	<name>customer-service</name>
 	<description>customer-service</description>
 	<url/>
@@ -83,7 +83,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
