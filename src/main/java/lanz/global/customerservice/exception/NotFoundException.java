@@ -3,7 +3,7 @@ package lanz.global.customerservice.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class NotFoundException extends ServiceException {
 
     public NotFoundException(String resource) {
