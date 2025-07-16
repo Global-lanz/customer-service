@@ -17,7 +17,7 @@ public interface FinanceClient {
     @GetMapping("/finance/currency/{currencyId}")
     CurrencyResponse findCurrencyById(@PathVariable UUID currencyId);
 
-    @GetMapping("/finance/contract/search/")
+    @GetMapping("/finance/contract/search")
     Page<ContractResponse> findAllByFilter(@ModelAttribute GetContractParams params);
 
 }
