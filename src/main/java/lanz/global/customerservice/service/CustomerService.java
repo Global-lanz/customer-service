@@ -52,7 +52,7 @@ public class CustomerService {
 
     public Customer findCustomerById(UUID customerId) {
         return customerRepository.findCustomerByCustomerIdAndCompanyId(customerId, authenticationFacade.getCompanyId())
-                .orElseThrow(() -> new NotFoundException("Customer"));
+                .orElseThrow(() -> new NotFoundException("customer"));
     }
 
     public void deleteCustomer(UUID customerId) {
