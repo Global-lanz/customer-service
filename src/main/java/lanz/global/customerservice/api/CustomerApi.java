@@ -2,14 +2,13 @@ package lanz.global.customerservice.api;
 
 import jakarta.annotation.security.RolesAllowed;
 import lanz.global.customerservice.api.config.Rules;
-import lanz.global.customerservice.api.request.CustomerRequest;
+import lanz.global.customerservice.api.request.customer.CustomerRequest;
 import lanz.global.customerservice.api.response.CustomerResponse;
 import lanz.global.customerservice.api.response.FindCustomersResponse;
 import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.service.CustomerService;
 import lanz.global.customerservice.util.converter.ServiceConverter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/customer")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class CustomerApi {
 
     private final CustomerService customerService;
