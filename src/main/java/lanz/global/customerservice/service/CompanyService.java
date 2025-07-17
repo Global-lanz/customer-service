@@ -6,7 +6,6 @@ import lanz.global.customerservice.external.api.company.response.CompanyResponse
 import lanz.global.customerservice.external.api.finance.FinanceClient;
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
