@@ -22,7 +22,7 @@ import java.util.Locale;
 
 @Log4j2
 @ControllerAdvice
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final MessageSource messageSource;
@@ -71,6 +71,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<ErrorResponse> handleFeignException(HttpServletRequest req, FeignException ex) {
+        log.error(ex.getMessage(), ex);
         return ResponseEntity.status(ex.status()).body(feignErrorDecoder.decode(ex));
     }
 
