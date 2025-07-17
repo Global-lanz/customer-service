@@ -1,6 +1,6 @@
 package lanz.global.customerservice.service;
 
-import lanz.global.customerservice.api.request.CustomerRequest;
+import lanz.global.customerservice.api.request.customer.CustomerRequest;
 import lanz.global.customerservice.exception.BadRequestException;
 import lanz.global.customerservice.exception.NotFoundException;
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
@@ -9,7 +9,6 @@ import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.repository.CustomerRepository;
 import lanz.global.customerservice.util.converter.ServiceConverter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

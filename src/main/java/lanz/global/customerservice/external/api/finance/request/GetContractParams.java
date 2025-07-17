@@ -1,8 +1,8 @@
 package lanz.global.customerservice.external.api.finance.request;
 
+import lanz.global.customerservice.api.request.PageRequest;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serial;
@@ -13,7 +13,7 @@ import java.util.UUID;
 public class GetContractParams extends PageRequest {
 
     @Serial
-    private static final long serialVersionUID = -3981791853063930213L;
+    private static final long serialVersionUID = 1488794646356144999L;
 
     private UUID customerId;
 
