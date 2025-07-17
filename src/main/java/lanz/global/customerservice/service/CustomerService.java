@@ -1,6 +1,7 @@
 package lanz.global.customerservice.service;
 
 import lanz.global.customerservice.api.request.CustomerRequest;
+import lanz.global.customerservice.exception.BadRequestException;
 import lanz.global.customerservice.exception.NotFoundException;
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import lanz.global.customerservice.facade.AuthenticationFacade;
@@ -22,6 +23,7 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final AuthenticationFacade authenticationFacade;
     private final CompanyService companyService;
+    private final FinanceService financeService;
 
     public Customer createCustomer(CustomerRequest customerRequest) {
         Customer customer = serviceConverter.convert(customerRequest, Customer.class);
@@ -50,12 +52,17 @@ public class CustomerService {
 
     public Customer findCustomerById(UUID customerId) {
         return customerRepository.findCustomerByCustomerIdAndCompanyId(customerId, authenticationFacade.getCompanyId())
-                .orElseThrow(() -> new NotFoundException("Customer"));
+                .orElseThrow(() -> new NotFoundException("customer"));
     }
 
     public void deleteCustomer(UUID customerId) {
         Customer customer = findCustomerById(customerId);
-
+        validateCustomerContainsContracts(customerId);
         customerRepository.delete(customer);
+    }
+    private void validateCustomerContainsContracts(UUID customerId) {
+        if (financeService.customerContainsLinkedContracts(customerId)) {
+            throw new BadRequestException("exception.customer.linked-contracts-exception.title", "exception.customer.linked-contracts-exception.message");
+        }
     }
 }
