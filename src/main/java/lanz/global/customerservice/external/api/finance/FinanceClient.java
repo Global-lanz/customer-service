@@ -4,6 +4,7 @@ import lanz.global.customerservice.external.api.finance.request.GetContractParam
 import lanz.global.customerservice.external.api.finance.response.ContractResponse;
 import lanz.global.customerservice.external.api.finance.response.CurrencyResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,6 @@ public interface FinanceClient {
     CurrencyResponse findCurrencyById(@PathVariable UUID currencyId);
 
     @GetMapping("/finance/contract/search")
-    Page<ContractResponse> findAllByFilter(@ModelAttribute GetContractParams params);
+    Page<ContractResponse> findAllByFilter(@SpringQueryMap GetContractParams params);
 
 }
