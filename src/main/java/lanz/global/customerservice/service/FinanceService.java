@@ -4,14 +4,14 @@ import lanz.global.customerservice.external.api.finance.FinanceClient;
 import lanz.global.customerservice.external.api.finance.request.GetContractParams;
 import lanz.global.customerservice.external.api.finance.response.ContractResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Slf4j
+@Log4j2
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class FinanceService {
