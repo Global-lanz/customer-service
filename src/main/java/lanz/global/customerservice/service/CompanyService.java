@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 public class CompanyService {
 
     private final CompanyClient companyClient;
