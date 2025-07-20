@@ -20,7 +20,6 @@ public interface FinanceClient {
     @GetMapping(value = "/finance/contract/search")
     Page<ContractResponse> findAllByFilter(@RequestParam UUID customerId,
                                            @RequestParam Integer pageNumber,
-                                           @RequestParam Integer pageSize,
-                                           @RequestParam Sort sort);
+                                           @RequestParam Integer pageSize);
 
 }

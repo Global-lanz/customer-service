@@ -21,7 +21,7 @@ public class FinanceService {
         GetContractParams params = new GetContractParams(customerId);
         log.debug("Searching for contracts linked to customer with ID: {}", customerId);
         Page<ContractResponse> response = financeClient.findAllByFilter(params.getCustomerId(), params.getPageNumber(),
-                params.getPageSize(), params.getSort());
+                params.getPageSize());
 
         log.debug("Found {} contracts linked to customer with ID: {}", response.getTotalElements(), customerId);
         return response.getTotalElements() > 0;
