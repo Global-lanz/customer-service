@@ -6,8 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Stream;
-
 @Component
 @RequiredArgsConstructor
 public class HeaderInterceptor implements RequestInterceptor {
@@ -16,8 +14,11 @@ public class HeaderInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
-        Stream.ofNullable(requestTemplate.headers())
-                .flatMap(headers -> headers.entrySet().stream())
-                .forEach(entry -> requestTemplate.header(entry.getKey(), entry.getValue()));
+        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
+            String headerValue = request.getHeader(headerName);
+            if (headerValue != null) {
+                requestTemplate.header(headerName, headerValue);
+            }
+        });
     }
 }

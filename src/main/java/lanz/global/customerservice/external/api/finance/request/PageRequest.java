@@ -1,4 +1,4 @@
-package lanz.global.customerservice.api.request;
+package lanz.global.customerservice.external.api.finance.request;
 
 import lombok.Setter;
 import org.springframework.data.domain.Pageable;

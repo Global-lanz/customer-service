@@ -1,6 +1,6 @@
-package lanz.global.customerservice.external.api.finance.request;
+package lanz.global.customerservice.external.api.finance.request.contract;
 
-import lanz.global.customerservice.api.request.PageRequest;
+import lanz.global.customerservice.external.api.finance.request.PageRequest;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.domain.Sort;
