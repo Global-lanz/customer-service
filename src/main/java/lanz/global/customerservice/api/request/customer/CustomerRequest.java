@@ -1,4 +1,4 @@
-package lanz.global.customerservice.api.request;
+package lanz.global.customerservice.api.request.customer;
 
 import jakarta.validation.constraints.NotBlank;
 
