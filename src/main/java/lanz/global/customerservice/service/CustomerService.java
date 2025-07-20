@@ -59,6 +59,7 @@ public class CustomerService {
         validateCustomerContainsContracts(customerId);
         customerRepository.delete(customer);
     }
+
     private void validateCustomerContainsContracts(UUID customerId) {
         if (financeService.customerContainsLinkedContracts(customerId)) {
             throw new BadRequestException("exception.customer.linked-contracts-exception.title", "exception.customer.linked-contracts-exception.message");

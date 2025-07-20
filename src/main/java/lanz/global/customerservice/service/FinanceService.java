@@ -18,8 +18,7 @@ public class FinanceService {
     private final FinanceClient financeClient;
 
     public boolean customerContainsLinkedContracts(UUID customerId) {
-        GetContractParams params = new GetContractParams();
-        params.setCustomerId(customerId);
+        GetContractParams params = new GetContractParams(customerId);
         log.debug("Searching for contracts linked to customer with ID: {}", customerId);
         Page<ContractResponse> response = financeClient.findAllByFilter(params);
 
