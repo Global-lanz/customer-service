@@ -1,6 +1,6 @@
 package lanz.global.customerservice.service;
 
-import lanz.global.customerservice.api.config.ServiceConfig;
+import lanz.global.customerservice.config.ServiceConfig;
 import lanz.global.customerservice.external.api.m2m.AuthenticationClient;
 import lanz.global.customerservice.external.api.m2m.request.ServiceAuthenticationRequest;
 import lanz.global.customerservice.external.api.m2m.response.ServiceAuthenticationResponse;
