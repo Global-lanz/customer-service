@@ -1,14 +1,16 @@
-package lanz.global.customerservice.api.config;
+package lanz.global.customerservice.config;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
+@Setter
 @ConfigurationProperties("gl.service.config")
 public class ServiceConfig {
 
     private final Security security = new Security();
+    private String serviceName;
 
     @Getter
     @Setter

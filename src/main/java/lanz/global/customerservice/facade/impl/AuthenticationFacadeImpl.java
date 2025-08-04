@@ -20,7 +20,13 @@ public class AuthenticationFacadeImpl implements AuthenticationFacade {
     public UUID getCompanyId() {
         Authentication authentication = getAuthentication();
         Jwt jwt = (Jwt) authentication.getPrincipal();
-        String companyId = (String) jwt.getClaims().get("companyId");
+        String type = jwt.getClaimAsString("type");
+
+        if (type.equals("service")) {
+            return null;
+        }
+
+        String companyId = jwt.getClaimAsString("companyId");
 
         return UUID.fromString(companyId);
     }

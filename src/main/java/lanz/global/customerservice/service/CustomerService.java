@@ -7,6 +7,7 @@ import lanz.global.customerservice.external.api.finance.response.CurrencyRespons
 import lanz.global.customerservice.facade.AuthenticationFacade;
 import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.repository.CustomerRepository;
+import lanz.global.customerservice.repository.impl.CustomerRepositoryFilter;
 import lanz.global.customerservice.util.converter.ServiceConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class CustomerService {
 
     private final ServiceConverter serviceConverter;
     private final CustomerRepository customerRepository;
+    private final CustomerRepositoryFilter customerRepositoryFilter;
     private final AuthenticationFacade authenticationFacade;
     private final CompanyService companyService;
     private final FinanceService financeService;
@@ -50,7 +52,7 @@ public class CustomerService {
     }
 
     public Customer findCustomerById(UUID customerId) {
-        return customerRepository.findCustomerByCustomerIdAndCompanyId(customerId, authenticationFacade.getCompanyId())
+        return customerRepositoryFilter.findByFilter(customerId, authenticationFacade.getCompanyId())
                 .orElseThrow(() -> new NotFoundException("customer"));
     }
 
