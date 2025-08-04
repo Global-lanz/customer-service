@@ -1,6 +1,6 @@
 package lanz.global.customerservice.security;
 
-import lanz.global.customerservice.api.config.ServiceConfig;
+import lanz.global.customerservice.config.ServiceConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

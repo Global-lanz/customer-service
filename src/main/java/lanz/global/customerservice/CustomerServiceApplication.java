@@ -1,6 +1,6 @@
 package lanz.global.customerservice;
 
-import lanz.global.customerservice.api.config.ServiceConfig;
+import lanz.global.customerservice.config.ServiceConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
