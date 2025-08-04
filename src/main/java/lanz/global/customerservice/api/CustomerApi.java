@@ -50,7 +50,7 @@ public class CustomerApi {
     }
 
     @GetMapping("/{customerId}")
-    @RolesAllowed(Rules.GET_CUSTOMER)
+    @RolesAllowed({Rules.GET_CUSTOMER, Rules.M2M})
     public ResponseEntity<CustomerResponse> findCustomerById(@PathVariable UUID customerId) {
         Customer customer = customerService.findCustomerById(customerId);
 
