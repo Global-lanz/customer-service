@@ -3,15 +3,18 @@ package lanz.global.customerservice.api;
 import jakarta.annotation.security.RolesAllowed;
 import lanz.global.customerservice.api.config.Rules;
 import lanz.global.customerservice.api.request.customer.CustomerRequest;
+import lanz.global.customerservice.api.request.customer.GetCustomerParams;
 import lanz.global.customerservice.api.response.CustomerResponse;
 import lanz.global.customerservice.api.response.FindCustomersResponse;
 import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.service.CustomerService;
 import lanz.global.customerservice.util.converter.ServiceConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,6 +50,14 @@ public class CustomerApi {
         response.customers = serviceConverter.convertList(customers, CustomerResponse.class);
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/search")
+    @RolesAllowed(Rules.LIST_CUSTOMERS)
+    public ResponseEntity<Page<CustomerResponse>> filterCustomers(@ModelAttribute GetCustomerParams params) {
+        Page<Customer> page = customerService.filterCustomers(params);
+
+        return ResponseEntity.ok(page.map(contract -> serviceConverter.convert(contract, CustomerResponse.class)));
     }
 
     @GetMapping("/{customerId}")
