@@ -164,13 +164,7 @@
 
 		<repository>
 			<id>github</id>
-			<url>https://maven.pkg.github.com/Global-lanz</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<url>https://maven.pkg.github.com/Global-lanz/library-service</url>
 		</repository>
 	</repositories>
 
