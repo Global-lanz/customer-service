@@ -28,6 +28,16 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Configure Maven settings
+      uses: s4u/maven-settings-action@v2.8.0
+      with:
+        servers: |
+          [{
+            "id": "github",
+            "username": "${{ github.actor }}",
+            "password": "${{ secrets.GITHUB_TOKEN }}"
+          }]
+
     - name: Get version from pom.xml using Maven
       id: get_version
       run: |
