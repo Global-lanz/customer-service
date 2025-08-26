@@ -56,25 +56,24 @@ jobs:
         echo "RC Version: $RC_VERSION"
         echo "rc_version=$RC_VERSION" >> $GITHUB_OUTPUT
 
-    - name: Login to Docker Hub
+    - name: Login to GitHub Container Registry
       if: ${{ contains(github.event.pull_request.labels.*.name, 'RC') }}
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_HUB_USER }}
-        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-   
-    - name: Build with Maven and Deploy into Docker Hub
-      if: ${{ contains(github.event.pull_request.labels.*.name, 'RC') }}
-      run: mvn spring-boot:build-image "-Dspring-boot.build-image.imageName=${{ env.IMAGE_NAME }}:${{ steps.rc_version.outputs.rc_version }}" --file pom.xml
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build with Maven
-      if: ${{ !contains(github.event.pull_request.labels.*.name, 'RC') }}
-      run: mvn -B package --file pom.xml
-   
-    # 4️⃣ Faz push da imagem Docker para o Docker Hub
+    - name: Build with Maven and Deploy into GHCR
+      if: ${{ contains(github.event.pull_request.labels.*.name, 'RC') }}
+      run: mvn spring-boot:build-image "-Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository }}/customer-service:${{ steps.rc_version.outputs.rc_version }}" --file pom.xml
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_ACTOR: ${{ github.actor }}
+
     - name: Push Docker Image with RC Tag
       if: ${{ contains(github.event.pull_request.labels.*.name, 'RC') }}
-      run: docker push $IMAGE_NAME:${{ steps.rc_version.outputs.rc_version }}
+      run: docker push ghcr.io/${{ github.repository }}/customer-service:${{ steps.rc_version.outputs.rc_version }}
 
     # 5️⃣ (Opcional) Cria a tag RC no GitHub
     - name: Create Git Tag
