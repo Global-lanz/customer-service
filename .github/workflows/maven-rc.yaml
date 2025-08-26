@@ -27,16 +27,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-
-    - name: Configure Maven settings
-      uses: s4u/maven-settings-action@v2.8.0
-      with:
-        servers: |
-          [{
-            "id": "github",
-            "username": "${{ github.actor }}",
-            "password": "${{ secrets.GITHUB_TOKEN }}"
-          }]
+        server-id: github
+        server-username: ${{ github.actor }}
+        server-password: ${{ secrets.GITHUB_TOKEN }}
 
     #############################################
     # 🚀 Só gera RC se o PR tiver a label RC
