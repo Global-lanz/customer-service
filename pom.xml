@@ -155,6 +155,9 @@
 			<id>github</id>
 			<url>https://maven.pkg.github.com/Global-lanz/library-service</url>
 		</repository>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/Global-lanz/*</url>
+		</repository>
 	</repositories>
-
 </project>
