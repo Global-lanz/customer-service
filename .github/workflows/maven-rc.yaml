@@ -17,6 +17,7 @@ jobs:
       contents: write        # necessário para criar tags
       pull-requests: write   # necessário para comentar no PR
       packages: read         # 🆕 ADICIONADO: para ler packages do GitHub
+      repository-projects: read  # Para acessar packages de outros repos da org
 
     env:
       IMAGE_NAME: maiconlanzendorf/customer-service
