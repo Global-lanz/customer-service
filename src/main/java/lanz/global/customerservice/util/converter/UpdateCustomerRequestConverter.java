@@ -2,6 +2,7 @@ package lanz.global.customerservice.util.converter;
 
 import lanz.global.customerservice.api.request.customer.CustomerRequest;
 import lanz.global.customerservice.model.Customer;
+import lanz.global.libraryservice.converter.dto.UpdateSourceTarget;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
