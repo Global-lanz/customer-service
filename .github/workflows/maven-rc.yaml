@@ -21,6 +21,8 @@ jobs:
 
     env:
       IMAGE_NAME: maiconlanzendorf/customer-service
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      GITHUB_ACTOR: ${{ github.actor }}
 
     steps:
       - uses: actions/checkout@v4
