@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "lanz.global.libraryservice")
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableConfigurationProperties(ServiceConfig.class)
