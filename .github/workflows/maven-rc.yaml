@@ -38,7 +38,7 @@ jobs:
           cache: maven
           server-id: github
           server-username: GITHUB_ACTOR  # 🔧 CORRIGIDO: sem ${{ }}
-          server-password: GITHUB_TOKEN   # 🔧 CORRIGIDO: sem ${{ }}
+          server-password: MAVEN_TOKEN   # 🔧 CORRIGIDO: sem ${{ }}
 
       #############################################
       # 🚀 Só gera RC se o PR tiver a label RC
