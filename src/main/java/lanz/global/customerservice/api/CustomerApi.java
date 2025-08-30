@@ -11,7 +11,7 @@ import lanz.global.customerservice.api.response.CustomerResponse;
 import lanz.global.customerservice.api.response.FindCustomersResponse;
 import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.service.CustomerService;
-import lanz.global.customerservice.util.converter.ServiceConverter;
+import lanz.global.libraryservice.converter.component.ServiceConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
