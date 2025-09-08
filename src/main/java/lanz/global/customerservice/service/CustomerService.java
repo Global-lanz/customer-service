@@ -9,7 +9,7 @@ import lanz.global.customerservice.facade.AuthenticationFacade;
 import lanz.global.customerservice.model.Customer;
 import lanz.global.customerservice.repository.CustomerRepository;
 import lanz.global.customerservice.repository.impl.CustomerFilterRepository;
-import lanz.global.customerservice.util.converter.ServiceConverter;
+import lanz.global.libraryservice.converter.component.ServiceConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

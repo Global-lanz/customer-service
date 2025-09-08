@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>lanz.global</groupId>
 	<artifactId>customer-service</artifactId>
-	<version>1.7.0</version>
+	<version>1.7.1</version>
 	<name>customer-service</name>
 	<description>customer-service</description>
 	<url/>
@@ -102,6 +102,11 @@
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-micrometer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>lanz.global</groupId>
+			<artifactId>library-service</artifactId>
+			<version>RC.20250908.001</version>
 		</dependency>
 
 		<dependency>
